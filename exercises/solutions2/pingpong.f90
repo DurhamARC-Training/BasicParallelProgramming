@@ -1,7 +1,7 @@
 PROGRAM pingpong
    USE mpi_f08
    implicit none
-   include 'mpif.h'
+!   include 'mpif.h'
 
    integer ierr, rank, size, i
    integer status (MPI_STATUS_SIZE)
@@ -31,7 +31,7 @@ PROGRAM pingpong
          CALL MPI_Ssend(send, 1, MPI_INTEGER, 1, 1, MPI_COMM_WORLD, ierr)
          write(*,*) 'Stage ', 4*(i-1)+1, ': sent ', send, ' on proc ', rank
 ! Receive message on first processor from second
-         CALL MPI_Recv(recv, 1, MPI_INTEGER, 1, 2, MPI_COMM_WORLD, status, ierr)
+         CALL MPI_Recv(recv, 1, MPI_INTEGER, 1, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
          write(*,*) 'Stage ', 4*(i-1)+4, ': received ', recv, ' on proc ', rank
          write(*,*)'                     adding 1 to receive buffer and placing in send buffer'
 ! Alter message for next iteration
@@ -39,7 +39,7 @@ PROGRAM pingpong
    
       ELSEIF (rank.eq.1) THEN
 ! Receive on second processor from first
-         CALL MPI_Recv(recv, 1, MPI_INTEGER, 0, 1, MPI_COMM_WORLD, status, ierr)
+         CALL MPI_Recv(recv, 1, MPI_INTEGER, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
          write(*,*) 'Stage ', 4*(i-1)+2, ': received ', recv, ' on proc ', rank
          write(*,*)'                     adding 1 to recieve buffer and placing in send buffer'
 ! Alter message to send back again

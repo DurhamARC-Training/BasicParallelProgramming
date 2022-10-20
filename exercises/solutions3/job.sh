@@ -4,12 +4,12 @@
 #SBATCH -e %A.err
 #SBATCH -p test.q
 #SBATCH -t 00:05:00
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mail-user=lcgk69@durham.ac.uk
-#SBATCH --mail-type=ALL
+#SBATCH -N 1 # number of nodes
+#SBATCH -n 4 # number of tasks (MPI ranks)
+#SBATCH -c 4 # number of cores per task
+
 module purge
-module load intel/2020.4
-module load intelmpi/intel/2019.6
-mpirun -np 4 ./collective
+module load intel/2021.4
+module load intelmpi/2021.6
+mpirun ./collective_c
 

@@ -1,11 +1,11 @@
 PROGRAM collective
    USE mpi_f08
    implicit none
-   include 'mpif.h'
+!   include 'mpif.h'
 
    integer ierr, rank, size
    integer status (MPI_STATUS_SIZE)
-   integer send, recv, token
+   integer send, recv, token, sum
 
 ! Initialise MPI
    CALL MPI_Init(ierr)
@@ -14,11 +14,11 @@ PROGRAM collective
 
 ! Compute global sum of all ranks
    CALL MPI_Allreduce (rank, sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD, ierr);
-   write(*,*) 'Rank ', rank, ': Sum = ', sum'
+   write(*,*) 'Rank ', rank, ': Sum = ', sum
 
 ! Compute partial rank sum
    CALL MPI_Scan(rank, sum, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD)
-   write(*,*) 'Rank ', rank, ': Sum = ', sum'
+   write(*,*) 'Rank ', rank, ': Sum = ', sum
 
    CALL MPI_Finalize(ierr) ! finalise MPI
 

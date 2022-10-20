@@ -22,7 +22,7 @@ int main (int argc, char *argv[]) {
 
 /* Initialize different data in every MPI process depending on their rank */
    my_data = rank + (1.0*rank)/size;
-   printf("I am process %d of size %d with data=%f\n", rank, size, my_data)
+   printf("I am process %d of size %d with data=%f\n", rank, size, my_data);
 
 /* Broadcast data from some process to all other processes */
 

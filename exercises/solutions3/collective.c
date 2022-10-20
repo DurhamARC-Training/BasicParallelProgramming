@@ -7,6 +7,7 @@ int main (int argc, char *argv[])
    int rank, size;
    int sum;
    int token;
+   int tag_ready=1;
 
    MPI_Status status;
 

@@ -1,7 +1,5 @@
 PROGRAM first_example
-
   USE mpi_f08
-
   IMPLICIT NONE
 
   INTEGER :: n               ! application-related data
