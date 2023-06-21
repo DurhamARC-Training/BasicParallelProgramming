@@ -14,9 +14,6 @@ int main(){
 
   const int maxIterations = 500;
 
-  int totalNumbersTested   = 0; //should be 500 * 500
-  int totalNumbersInMandel = 0;
-
   const double xStart = -1;
   const double xEnd   =  1;
   const double yStart = -1;
@@ -33,11 +30,18 @@ int main(){
   double xToTest[numbersToTestInEachDim];
   double yToTest[numbersToTestInEachDim];
 
+  /*
+  define a logically 2d boolean array to store whether or not it was a 
+  mandel number
+  */
+
+  bool isMandelOrNot[numbersToTestInEachDim * numbersToTestInEachDim];
+
   populateArray(xToTest, xStart, xEnd, numbersToTestInEachDim);
   populateArray(yToTest, yStart, yEnd, numbersToTestInEachDim);
 
   //master region to issue the tasks
-  #pragma omp parallel reduction(+:totalNumbersTested, totalNumbersInMandel)
+  #pragma omp parallel
   {
     #pragma omp master //only master thread in here
     {
@@ -45,25 +49,22 @@ int main(){
         for (int j = 0; j < numbersToTestInEachDim; j++){
 
           //use our pre-written function to test if this number is in the mandelBrot set or not
-          #pragma omp task shared(xToTest, yToTest, maxIterations, i, j, totalNumbersInMandel, totalNumbersTested) default(none)
+          #pragma omp task
           {
-            bool isXYInMandelBrotSet = isMandelBrot(xToTest[i], yToTest[j], maxIterations);
-            if (isXYInMandelBrotSet)
-              //one at a time here. can also call 
-              // #pragma omp atomic
-              #pragma omp critical
-              totalNumbersInMandel++;
-
-            //increment our counter
-            //one at a time here. can also call 
-            // #pragma omp atomic
-            #pragma omp critical
-            totalNumbersTested++;
+            isMandelOrNot[i * numbersToTestInEachDim + j] = isMandelBrot(xToTest[i], yToTest[j], maxIterations);
           }
         }
       }
     }
   }
+
+  //traverse the bool array
+
+  int totalNumbersTested   = numbersToTestInEachDim * numbersToTestInEachDim;
+  int totalNumbersInMandel = 0;
+  for (int i = 0; i < totalNumbersTested; i++)
+    if ( isMandelOrNot[i] )
+      totalNumbersInMandel++;
 
   double percentage = 100 * totalNumbersInMandel / totalNumbersTested;
   printf("finished. we tested %d complex numbers, and %d were mandel numbers. this is %.2f percent\n", totalNumbersTested, totalNumbersInMandel, percentage);
