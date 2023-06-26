@@ -8,7 +8,7 @@ int main(){
     sum += i;
   }
 
-  printf("without multithreading, the sum of first 10 integers is %d\n", sum);
+  printf("without multithreading, the sum of first 10 integers is                      %d\n", sum);
 
   sum = 0;
 
@@ -17,7 +17,7 @@ int main(){
     sum += i;
   }
 
-  printf("using multithreading, the sum of first 10 integers is %d\n", sum);
+  printf("using unsafe multithreading, the sum of first 10 integers is                 %d\n", sum);
 
   sum = 0;
 
@@ -27,8 +27,8 @@ int main(){
     sum += i;
   }
 
-  printf("using multithreading with \"critical\" guard, the sum of first 10 integers is %d\n", sum);
-
+  printf("using multithreading with \"critical\" guard, the sum of first 10 integers is  %d\n", sum);
+  
   sum = 0;
   
   #pragma omp parallel for reduction(+:sum)
@@ -36,6 +36,6 @@ int main(){
     sum += i;
   }
 
-  printf("using multithreading with reduction, the sum of first 10 integers is %d\n", sum);
+  printf("using multithreading with reduction, the sum of first 10 integers is         %d\n", sum);
 
 }
