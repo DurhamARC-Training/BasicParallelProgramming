@@ -1,9 +1,10 @@
-# ARC course: A very brief introduction to parallel programming with a Supercomputer
+# ARC course: A brief introduction to parallel programming on a Supercomputer
 
-* Introduction to parallel programming with MPI using C and FORTRAN
+* Introduction to parallel programming with OpenMP and MPI using C and FORTRAN
 * Get a taste: First example with broadcasting all data from the master process to all others
 * Practicals:
-  - The famous Hello World program
+  - Simple examples on OpenMP
+  - The famous Hello World program on MPI
   - Let's play Ping-Pong: point-to-point communications (synchronous, buffered, standard, ready, non-blocking)
   - Collective operations
 * Bonus practical:
