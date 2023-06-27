@@ -5,7 +5,7 @@
 * Practicals:
   - Simple examples on OpenMP
   - The famous Hello World program on MPI
-  - Let's play Ping-Pong: point-to-point communications (synchronous, buffered, standard, ready, non-blocking)
+  - Let's play Ping-Pong: point-to-point communications (synchronous, buffered, standard, ready)
   - Collective operations
 * Bonus practical:
   - Computing Pi number
