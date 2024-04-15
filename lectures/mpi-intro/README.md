@@ -5,7 +5,7 @@ template: titleslide
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
 ---
-## MPI: Message Passing Interface
+# MPI: Message Passing Interface
 
 .center[
 ![:scale_img 100%](par-intro-1.png)

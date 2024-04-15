@@ -18,7 +18,7 @@ table {
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
 ---
-## Distributed memory systems
+# Distributed memory systems
 
 .center[![:scale_img 100%](par-intro-2.png)]
 
@@ -27,7 +27,7 @@ Distributed memory system e.g. Beowulf cluster. Architecture matches message pas
 .center[![:scale_img 100%](par-intro-3a.png)]
 
 ---
-## Shared memory systems
+# Shared memory systems
 
 .center[![:scale_img 100%](par-intro-3.png)]
 
@@ -36,14 +36,14 @@ Shared-memory system, e.g., multiprocessor desktop PCs. Can use interconnect + m
 .center[![:scale_img 100%](par-intro-3a.png)]
 
 ---
-## Shared memory clusters
+# Shared memory clusters
 
 .center[![:scale_img 100%](par-intro-4.png)]
 
 Will use both memory/interconnect to communicate between processes. Commonly now found shared memory clusters (e.g., Hamilton!)
 
 ---
-## Machine architecture: Hamilton
+# Machine architecture: Hamilton
 
 .center[![:scale_img 100%](par-intro-5.png)]
 
@@ -53,7 +53,7 @@ Totals:
 - 2 PB shared storage
 
 ---
-## How to get to Hamilton
+# How to get to Hamilton
 
 1. Option 1 - the standard way
     * ssh to Hamilton: `ssh <username>@hamilton8.dur.ac.uk`
@@ -72,7 +72,7 @@ Totals:
     * Then you can ssh to Hamilton simply: `ssh hamilton8`
 
 ---
-## How to copy files from and to Hamilton
+# How to copy files from and to Hamilton
 
 If you configured SSH using the recommended way above, copying files to Hamilton works as follows:
 
@@ -83,7 +83,7 @@ scp -r <filename> <username>@hamilton8
 Copying files from Hamilton works in the same way, you only have to reverse the copy direction.
 
 ---
-## The Slurm queuing system
+# The Slurm queuing system
 
 To fairly share the available resources, Hamilton has a queueing system called _Slurm_.
 
@@ -114,7 +114,7 @@ mpirun ./myprogram
 ```
 
 ---
-## Slurm job script options
+# Slurm job script options
 
 | Option      | Description |
 | ----------- | ----------- |
@@ -130,14 +130,14 @@ mpirun ./myprogram
 | `--mail-type=<TYPE>`| Types of job notifications to send, e.g. `BEGIN`, `END`, `FAIL`, `ALL` (recommended: `END`,`FAIL`).  For batch jobs only.|
 
 ---
-## Non-Uniform Memory Access Architecture
+# Non-Uniform Memory Access Architecture
 
 > **Non-uniform memory access (NUMA)** is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor. Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memory shared between processors) [Wikipedia](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
 
 .center[![:scale_img 80%](667299529139032064.png)]
 
 ---
-#### ASCII representation 🙂
+# ASCII representation 🙂
 
 ```console
 
@@ -198,7 +198,7 @@ mpirun ./myprogram
 ```
 
 ---
-## NUMA on Hamilton
+# NUMA on Hamilton
 
 `lscpu` is a utility for getting detailed information about the CPU (Central Processing Unit) configuration of the system.
 
@@ -236,7 +236,7 @@ NUMA node7 CPU(s):   112-127
 ```
 
 ---
-#### What are nodes, sockets, cores, threads (still confused)? 🤔
+# What are nodes, sockets, cores, threads (still confused)? 🤔
 
 * `Sockets` represents how many physical CPUs are in the system.
 * `Cores per socket` is how many full CPU cores (including loading/decoding logic) there are per physical CPU.
