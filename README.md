@@ -9,3 +9,8 @@
   - Collective operations
 * Bonus practical:
   - Computing Pi number
+
+Slides:
+
+* [Lectures](lectures/)
+* [Exercises](exercises/)
