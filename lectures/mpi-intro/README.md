@@ -5,7 +5,6 @@ template: titleslide
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
 ---
-
 ## MPI: Message Passing Interface
 
 .center[
