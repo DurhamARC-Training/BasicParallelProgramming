@@ -1,5 +1,5 @@
 template: titleslide
-# A brief introduction to HPC and parallel architectures
+# A brief introduction to parallel architectures and HPC
 ### Dmitry Nikolaenko, Sean Baccas
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
