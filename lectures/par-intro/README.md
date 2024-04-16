@@ -6,32 +6,32 @@ template: titleslide
 ---
 # Distributed memory systems
 
-.center[![:scale_img 100%](par-intro-2.png)]
+.center[![:scale_height_img 60%](par-intro-2.png)]
 
 Distributed memory system e.g. Beowulf cluster. Architecture matches message passing paradigm.
 
-.center[![:scale_img 100%](par-intro-3a.png)]
+.center[![:scale_width_img 70%](par-intro-3a.png)]
 
 ---
 # Shared memory systems
 
-.center[![:scale_img 100%](par-intro-3.png)]
+.center[![:scale_height_img 60%](par-intro-3.png)]
 
 Shared-memory system, e.g., multiprocessor desktop PCs. Can use interconnect + memory as a communications network (the basis of mixed-mode parallelism)
 
-.center[![:scale_img 100%](par-intro-3a.png)]
+.center[![:scale_width_img 70%](par-intro-3a.png)]
 
 ---
 # Shared memory clusters
 
-.center[![:scale_img 100%](par-intro-4.png)]
+.center[![:scale_width_img 100%](par-intro-4.png)]
 
 Will use both memory/interconnect to communicate between processes. Commonly now found shared memory clusters (e.g., Hamilton!)
 
 ---
 # Machine architecture: Hamilton
 
-.center[![:scale_img 100%](par-intro-5.png)]
+.center[![:scale_width_img 100%](par-intro-5.png)]
 
 Totals:
 - 122 compute nodes
@@ -120,7 +120,7 @@ mpirun ./myprogram
 
 > **Non-uniform memory access (NUMA)** is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor. Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memory shared between processors) [Wikipedia](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
 
-.center[![:scale_img 80%](667299529139032064.png)]
+.center[![:scale_width_img 80%](667299529139032064.png)]
 
 ---
 # ASCII representation 🙂

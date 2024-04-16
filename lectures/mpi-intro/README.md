@@ -7,6 +7,6 @@ template: titleslide
 # MPI: Message Passing Interface
 
 .center[
-![:scale_img 100%](par-intro-1.png)
+![:scale_width_img 100%](par-intro-1.png)
 ]
 
