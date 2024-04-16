@@ -31,7 +31,7 @@ Will use both memory/interconnect to communicate between processes. Commonly now
 ---
 # Machine architecture: Hamilton
 
-.center[![:scale_height_img 80%](par-intro-5.png)]
+.center[![:scale_width_img 100%](par-intro-5.png)]
 
 <!---
 Totals:
@@ -77,6 +77,8 @@ To fairly share the available resources, Hamilton has a queueing system called _
 
 > _Slurm_ is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters. [Source](https://slurm.schedmd.com/quickstart.html)
 
+Slurm provides users with a framework for starting, executing, and monitoring work, typically in the form of batch jobs and job arrays, on a set of allocated nodes.
+
 A batch job is typically written on a login node and is submitted to Slurm from there. A job script file contains:
 
 * instructions to Slurm describing the resources (CPU, memory, time, etc) needed for the job and any other Slurm settings
@@ -117,6 +119,18 @@ mpirun ./myprogram
 | `--array=<START>-<END>`| Run job several times, from indexes `<START>` to `<END>`|
 | `--mail-user=<EMAIL>`| Send job notifications to email address `<EMAIL>` (for batch jobs only; not needed to send to submitter's Durham address)|
 | `--mail-type=<TYPE>`| Types of job notifications to send, e.g. `BEGIN`, `END`, `FAIL`, `ALL` (recommended: `END`,`FAIL`).  For batch jobs only.|
+
+---
+# Some Slurm commands
+
+| Command      | Description |
+| ------------ | ----------- |
+| `sbatch job.sh` | Submits a job script for execution |
+| `squeue –u user` | Displays information about jobs belonging to `user` from the Slurm scheduling queue |
+| `squeue --start -u user` | Displays the expected start time for pending jobs belonging to `user` |
+| `scancel job_id` | Cancels a pending or running job `job_id` |
+| `scancel –u user` | Cancels all jobs belonging to `user` |
+| `sacct -j job_id --format=JobID,JobName,MaxRSS,Elapsed` | Useful for tracking resource usage and performance metrics for completed jobs |
 
 ---
 # Non-uniform memory access (NUMA)
