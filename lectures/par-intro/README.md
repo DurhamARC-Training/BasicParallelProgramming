@@ -1,17 +1,3 @@
-<style>
-pre[class*=console]
-{font-size: 0.8em;} 
-</style>
-<style>
-pre[class*=shell]
-{font-size: 0.8em;} 
-</style>
-<style scoped>
-table {
-  font-size: 0.8em;
-}
-</style>
-
 template: titleslide
 # A brief introduction to HPC and parallel architectures
 ### Dmitry Nikolaenko, Sean Baccas
