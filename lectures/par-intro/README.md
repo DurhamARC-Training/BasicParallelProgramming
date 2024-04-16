@@ -10,7 +10,7 @@ template: titleslide
 
 Distributed memory system e.g. Beowulf cluster. Architecture matches message passing paradigm.
 
-.center[![:scale_width_img 70%](par-intro-3a.png)]
+.center[![:scale_width_img 50%](par-intro-3a.png)]
 
 ---
 # Shared memory systems
@@ -19,7 +19,7 @@ Distributed memory system e.g. Beowulf cluster. Architecture matches message pas
 
 Shared-memory system, e.g., multiprocessor desktop PCs. Can use interconnect + memory as a communications network (the basis of mixed-mode parallelism)
 
-.center[![:scale_width_img 70%](par-intro-3a.png)]
+.center[![:scale_width_img 50%](par-intro-3a.png)]
 
 ---
 # Shared memory clusters
@@ -31,12 +31,14 @@ Will use both memory/interconnect to communicate between processes. Commonly now
 ---
 # Machine architecture: Hamilton
 
-.center[![:scale_width_img 100%](par-intro-5.png)]
+.center[![:scale_height_img 90%](par-intro-5.png)]
 
+<!---
 Totals:
 - 122 compute nodes
 - 15,616 cores, 34T RAM
 - 2 PB shared storage
+--->
 
 ---
 # How to get to Hamilton
@@ -69,7 +71,7 @@ scp -r <filename> <username>@hamilton8
 Copying files from Hamilton works in the same way, you only have to reverse the copy direction.
 
 ---
-# The Slurm queuing system
+# Slurm job script
 
 To fairly share the available resources, Hamilton has a queueing system called _Slurm_.
 
@@ -80,7 +82,8 @@ A batch job is typically written on a login node and is submitted to Slurm from 
 * instructions to Slurm describing the resources (CPU, memory, time, etc) needed for the job and any other Slurm settings
 * the commands the job will run, in sequence
 
-Here's an example job script `job.sh`:
+---
+# Slurm job script: example
 
 ```shell
 #!/bin/bash
@@ -100,7 +103,7 @@ mpirun ./myprogram
 ```
 
 ---
-# Slurm job script options
+# Slurm job script: options
 
 | Option      | Description |
 | ----------- | ----------- |
@@ -116,17 +119,22 @@ mpirun ./myprogram
 | `--mail-type=<TYPE>`| Types of job notifications to send, e.g. `BEGIN`, `END`, `FAIL`, `ALL` (recommended: `END`,`FAIL`).  For batch jobs only.|
 
 ---
-# Non-Uniform Memory Access Architecture
-
-> **Non-uniform memory access (NUMA)** is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor. Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memory shared between processors) [Wikipedia](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
+# Non-uniform memory access (NUMA)
 
 .center[![:scale_width_img 80%](667299529139032064.png)]
 
 ---
-# ASCII representation 🙂
+# NUMA: definition
 
+> **Non-uniform memory access (NUMA)** is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor. Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memory shared between processors) [Wikipedia](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
+
+---
+---
+# NUMA: ASCII representation 🙂
+
+.columns[
+.col[
 ```console
-
 +--------------------------+   +--------------------------+
 | Socket 1                 |   | Socket 2                 |
 |                          |   |                          |
@@ -151,14 +159,12 @@ mpirun ./myprogram
 |                          |   |                          |
   .... more cores .....          .... more cores .....
 |                          |   |                          |
-| +----------------------+ |   | +----------------------+ |
-| |  Core 6              | |   | |  Core 6              | |
-| | +------------------+ | |   | | +------------------+ | |
-| | | Thread 0 (cpu12) | | |   | | | Thread 0 (cpu26) | | |
-| | +------------------+ | |   | | +------------------+ | |
-| | | Thread 1 (cpu13) | | |   | | | Thread 1 (cpu27) | | |
-| | +------------------+ | |   | | +------------------+ | |
-| +----------------------+ |   | +----------------------+ |
+```
+]
+.col[
+```console
+|                          |   |                          |
+  .... more cores .....          .... more cores .....
 |                          |   |                          |
 | +----------------------+ |   | +----------------------+ |
 | |  Core 7              | |   | |  Core 7              | |
@@ -182,12 +188,16 @@ mpirun ./myprogram
 |                          |   |                          |
 +--------------------------+   +--------------------------+
 ```
+]
+]
 
 ---
 # NUMA on Hamilton
 
 `lscpu` is a utility for getting detailed information about the CPU (Central Processing Unit) configuration of the system.
 
+.columns[
+.col[
 ```console
 lcgk69@login1:~$ lscpu
 Architecture:        x86_64
@@ -206,6 +216,10 @@ Model name:          AMD EPYC 7702 64-Core Processor
 Stepping:            0
 CPU MHz:             1996.237
 BogoMIPS:            3992.47
+```
+]
+.col[
+```console
 Virtualization:      AMD-V
 L1d cache:           32K
 L1i cache:           32K
@@ -220,9 +234,11 @@ NUMA node5 CPU(s):   80-95
 NUMA node6 CPU(s):   96-111
 NUMA node7 CPU(s):   112-127
 ```
+]
+]
 
 ---
-# What are nodes, sockets, cores, threads (still confused)? 🤔
+# Technical terms
 
 * `Sockets` represents how many physical CPUs are in the system.
 * `Cores per socket` is how many full CPU cores (including loading/decoding logic) there are per physical CPU.
