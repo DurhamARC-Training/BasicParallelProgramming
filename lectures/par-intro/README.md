@@ -1,4 +1,3 @@
-template: titleslide
 <style>
 pre[class*=console]
 {font-size: 0.8em;} 
@@ -13,6 +12,7 @@ table {
 }
 </style>
 
+template: titleslide
 # A brief introduction to HPC and parallel architectures
 ### Dmitry Nikolaenko, Sean Baccas
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
