@@ -1,5 +1,5 @@
 
-durham.footer_text = "&copy; Rupert Nash, The University of Edinburgh, CC-BY";
+//durham.footer_text = "&copy; Advanced Research Computing, Durham University, CC-BY";
 cpptheme = new Theme(
     (str => str.substring(0, str.lastIndexOf("/")))(document.currentScript.src),
     '$BASEURL/style.css',
