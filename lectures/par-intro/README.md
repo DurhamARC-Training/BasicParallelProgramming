@@ -4,6 +4,8 @@ template: titleslide
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
 ---
+
+---
 # Distributed memory systems
 
 .center[![:scale_height_img 60%](par-intro-2.png)]
@@ -142,7 +144,6 @@ mpirun ./myprogram
 
 > **Non-uniform memory access (NUMA)** is a computer memory design used in multiprocessing, where the memory access time depends on the memory location relative to the processor. Under NUMA, a processor can access its own local memory faster than non-local memory (memory local to another processor or memory shared between processors) [Wikipedia](https://en.wikipedia.org/wiki/Non-uniform_memory_access)
 
----
 ---
 # NUMA: ASCII representation 🙂
 
