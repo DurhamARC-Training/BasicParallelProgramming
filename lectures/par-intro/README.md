@@ -4,6 +4,47 @@ template: titleslide
 #### dmitry.nikolaenko@durham.ac.uk, sean.d.baccas@durham.ac.uk
 
 ---
+# Course Outline
+
+Basics of parallel programming with OpenMP and MPI using Durham University’s supercomputer, Hamilton.
+
+Aims of the course:
+
+* Introduction to parallel programming and to both shared- and distributed-memory model
+* Learn how to make a serial C code multi-threaded by adding `pragma` directives
+* Learn about synchronisation, critical region and atomic directive
+* Learn how to use MPI commands to pass messages
+* Learn about collective and combined parallel communications
+* Be familiarised with data handling and higher functions of MPI
+
+---
+# Course Timing
+
+* 10:00-10:10 – Get-to-know round
+* 10:10-10:20 – Brief introduction to HPC and parallel programming models
+* 10:10-10:40 – **1. Basics of OpenMP**
+  * 10:40-11:00 – _Practical session OpenMP_
+    * 11:00-11:10 – “coffee break”
+ 
+* 11:10-11:40 –  **2. Basics of MPI: Point-to-point communications**
+  * 11:40-12:00 – _Practical session 2: “Ping pong!”_
+    * 12:00-12:10 - “coffee break”
+
+* 12:15-12:40 – **3. Basics of MPI: Collective communications**
+  * 12:40-13:00 – _Practical session 3: “Collective communication”_
+
+* Conclusion: advanced topics
+
+---
+# Preliminaries
+
+* Where are you from in the University and what is your _research_?
+
+* What is your experience of _parallel programming_ and _high performance computing_?
+
+* How do you plan to use parallel programming in your research?
+  - Are you currently trying to parallellise your code?
+  - Are there any difficulties in this development?
 
 ---
 # Distributed memory systems
