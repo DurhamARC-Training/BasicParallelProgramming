@@ -31,7 +31,7 @@ Will use both memory/interconnect to communicate between processes. Commonly now
 ---
 # Machine architecture: Hamilton
 
-.center[![:scale_height_img 80%](par-intro-5.png)]
+.center[![:scale_width_img 100%](par-intro-5.png)]
 
 <!---
 Totals:
