@@ -1,7 +1,7 @@
 export PATH := $(PWD):$(PATH)
-CFLAGS := -pthread -fopenmp -fsanitize=thread -O1 -g -I/usr/lib/gcc/x86_64-linux-gnu/11/include/
+CFLAGS := -pthread -fopenmp -fsanitize=thread -O1 -g
 LDFLAGS = -fopenmp -fsanitize=thread -lpthread
-CC := gcc-12
+CC := gcc
 
 sumToTen: sumTo10.c
 	$(CC) -o intermediate.o -c sumTo10.c $(CFLAGS)
