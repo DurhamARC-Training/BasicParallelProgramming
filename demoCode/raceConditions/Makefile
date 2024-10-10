@@ -12,3 +12,7 @@ sumToTen: sumTo10.c
 
 clean:
 	rm -rf *.exe
+
+
+# warning - linux kernel changes mean you might have to call sudo sysctl vm.mmap_rnd_bits=28
+# before it will let you run the sanitizer...
