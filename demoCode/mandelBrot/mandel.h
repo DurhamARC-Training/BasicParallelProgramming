@@ -25,7 +25,7 @@ bool isMandelBrot(const double x, const double y, const int maxIters){
   note that (x + iy)^2 = x^2 - y^2 + 2ixy
   we update the real part and imaginary part separately
   */
-  while ( (iterator < maxIters) && (zR * zR + zI * zI) < 4 ){
+  while ( (iterator < maxIters) ){
     //store the old value of zR
     double tempReal = zR;
     
