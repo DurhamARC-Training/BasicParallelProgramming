@@ -6,6 +6,8 @@ int main (int argc, char *argv[]) {
    int rank, size, i;
    int send,recv;
    MPI_Status status;
+
+   const int N = 2;
    
 /* Initialise MPI */
    MPI_Init(&argc, &argv);
@@ -25,24 +27,32 @@ int main (int argc, char *argv[]) {
    if (rank == 0) { send = 1; } /* initialise send buffer on the first processor */
 
 /* Begin loop */
-   for (i=0; i<10; i++) { /* repeat for 10 iterations */
+
+   for (i=0; i<N; i++) { /* repeat for N iterations */
       if (rank == 0) {
+
 /* Blocking send on first processor to second */
          MPI_Ssend(&send, 1, MPI_INT, 1, 1, MPI_COMM_WORLD);
          printf ("Stage %d: sent %d on processor %d\n", 4*i+1, send, rank);
+
 /* Blocking receive on first processor from second */    
          MPI_Recv(&recv, 1, MPI_INT, 1, 2, MPI_COMM_WORLD, &status);
          printf ("Stage %d: received %d on processor %d\n", 4*i+4, recv, rank);
          printf ("          adding 1 to receive buffer and placing in send buffer\n");
+
 /* Alter data for next loop */
          send = recv + 1;
+
       } else if (rank == 1) {
+
 /* Blocking receive on second processor from first */
          MPI_Recv(&recv, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);
          printf ("Stage %d: received %d on processor %d\n", 4*i+2, recv, rank);
          printf ("          adding 1 to receive buffer and placing in send buffer\n");
+
 /* Alter data to send back again */
          send = recv + 1;
+
 /* Blocking send on first processor to second */
          MPI_Ssend(&send, 1, MPI_INT, 0, 2, MPI_COMM_WORLD);
          printf ("Stage %d: sent %d on processor %d\n", 4*i+3, send, rank);

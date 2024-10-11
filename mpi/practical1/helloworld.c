@@ -1,23 +1,51 @@
 #include <stdio.h>
+#include "/* INSERT MISSING HEADER */"
+
+////////////
+// MPI Hello World
+////////////
+//
+// Classical example printing "Hello World" in several processes
+// Bonuses: 1) Printing different data in different processes
+//          2) Using barrier to wait until all previous commands (outputs) are executed before the next ones
+//          3) Broadcasting data from one process to all processes
+//
+// example usage:
+//		compile: mpicc -o helloworld helloworld.c
+//		run: mpirun -n 4 helloworld
+//
 
 int main (int argc, char *argv[]) {
 
-    double my_data, my_result;
+    double my_data;
 
-/* Turn it into an MPI program (need to insert in various locations) */
+/* Turn it into an MPI program (initialise MPI) */   
+   ; /* <-- INSERT MISSING MPI FUNCTION ON THIS LINE */
+   MPI_Comm_rank(/*INSERT ARGUMENTS*/); /* Get the rank within the global communicator */
+   MPI_Comm_size(/*INSERT ARGUMENTS*/); /* Get the total number of ranks within the global communicator */
 
 /* Experiment with Hello message in all processes and only in the master process */
 
-   printf("Hello World\n");
+   printf("Hello world from rank %d of size %d \n"/*, INSERT VARIABLES */);
+   if (/*INSERT CONDITION*/) { /* Only rank == 0 should print */
+     printf("Hello world from the master process rank %d of size %d \n"/*, INSERT VARIABLES */);
+   }
+   fflush(stdout);  // Flush output to ensure it appears immediately
    
-/* Print out various information about MPI infrastructure */
+/* Wait for all processes to be executed until here before continuing further */
+
+   ; /* INSERT MISSING MPI COMMAND */
 
 /* Initialize different data in every MPI process depending on their rank */
 
-   printf("I am process ... with data = %f\n", my_data)
+   my_data = /* ASSIGN DIFFERENT VALUES DEPENDING ON RANK*/;
+   printf("I am process %d of size %d with data=%4.2f before broadcasting\n" /*, INSERT VARIABLES */);
 
-/* Broadcast data from some process to all other processes */
+/* Broadcast data from rank 1 to all other ranks */
 
-/* Do some work with data (get result) and print data and result in every process */
+   MPI_Bcast(/*INSERT ARGUMENTS*/);
+   printf("I am process %d of size %d with data=%4.2f after broadcasting\n" /*, INSERT VARIABLES */);
 
+/* Properly shutdown MPI (finalise MPI) */
+   ; /* <-- INSERT MISSING MPI FUNCTION ON THIS LINE */
 }
