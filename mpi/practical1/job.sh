@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="HelloWorld"
+#SBATCH --job-name="PingPong"
 #SBATCH -o %A.out
 #SBATCH -e %A.err
 #SBATCH -p test.q
@@ -11,5 +11,5 @@
 module purge
 module load intel/2020.4
 module load intelmpi/intel/2019.6
-mpirun -np 4 ./helloworld
+mpirun -np 4 ./pingpong
 

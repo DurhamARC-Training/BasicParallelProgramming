@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="PingPong"
+#SBATCH --job-name="Collective"
 #SBATCH -o %A.out
 #SBATCH -e %A.err
 #SBATCH -p test.q
@@ -10,6 +10,6 @@
 #SBATCH --mail-type=ALL
 module purge
 module load intel/2020.4
-module load intelmpi/intel/2019.6
-mpirun -np 4 ./pingpong
+module load intelmpi/2021.6
+mpirun -np 4 ./collective
 
