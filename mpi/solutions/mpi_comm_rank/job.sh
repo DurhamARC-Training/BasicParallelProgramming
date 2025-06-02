@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="PingPong"
+#SBATCH --job-name="mpi_comm_rank"
 #SBATCH -o %A.out
 #SBATCH -e %A.err
 #SBATCH -p test.q
@@ -11,5 +11,5 @@
 module purge
 module load intel/2021.4
 module load intelmpi/2021.6
-mpirun ./pingpong_c
+mpirun ./mpi_comm_rank
 
