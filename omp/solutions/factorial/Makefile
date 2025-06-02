@@ -2,13 +2,13 @@ export PATH := $(PWD):$(PATH)
 CFLAGS := -pthread -fopenmp
 LDFLAGS = -fopenmp -lpthread -O3 
 
-picalc: factorial.c
+factorial: factorial.c
 	gcc -o intermediate.o -c factorial.c $(CFLAGS)
-	gcc intermediate.o -o factorial.exe $(LDFLAGS)
+	gcc intermediate.o -o factorial $(LDFLAGS)
 	rm -rf *.o
 
 all:
 	make factorial
 
 clean:
-	rm -rf *.exe
+	rm -rf factorial

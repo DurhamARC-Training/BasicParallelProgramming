@@ -10,4 +10,4 @@ module purge
 
 module load gcc
 
-./factorial.exe
+./factorial

@@ -10,4 +10,4 @@ module purge
 
 module load gcc
 
-./mandelTask.exe
+./mandelTask
