@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="raceConditions"
+#SBATCH --job-name="piCalc_solution"
 #SBATCH -o %A.out
 #SBATCH -e %A.err
 #SBATCH -p test.q
@@ -10,4 +10,4 @@ module purge
 
 module load gcc
 
-./sumTo10.exe
+./picalc.exe
