@@ -47,7 +47,7 @@ double integrateMultiThreaded( double (*function)(double), const double lower, c
 
   double xi;
 
-  #pragma omp parallel for default(none) shared(lower, h, nSteps, function) private(xi) reduction(+:output)
+  #pragma omp parallel for default(none) shared(function) private(xi) reduction(+:output)
   for( size_t i = 0; i < nSteps; i++ ){
 
     /*
