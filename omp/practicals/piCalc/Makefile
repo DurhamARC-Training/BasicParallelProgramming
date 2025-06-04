@@ -4,11 +4,11 @@ LDFLAGS = -fopenmp -lpthread -O3
 
 picalc: picalc.c
 	gcc -o intermediate.o -c picalc.c $(CFLAGS)
-	gcc intermediate.o -o picalc.exe $(LDFLAGS)
+	gcc intermediate.o -o picalc $(LDFLAGS)
 	rm -rf *.o
 
 all:
 	make picalc
 
 clean:
-	rm -rf *.exe
+	rm -rf picalc
