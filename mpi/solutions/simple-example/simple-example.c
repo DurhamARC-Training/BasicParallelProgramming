@@ -5,15 +5,28 @@ int main(int argc, char *argv[])
 {
   int n;  double result;  // application-related data
   int my_rank, num_procs; // MPI-related data
+  FILE *input_file = NULL;
 
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
   MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
 
   if (my_rank == 0)   
-  { // reading the application data "n" from stdin only by process 0:
-    printf("Enter the number of elements (n): \n");
-    scanf("%d",&n); 
+  { // reading the application data "n" from file only by process 0:
+    input_file = fopen("input.txt", "r");
+    if (!input_file) {
+      printf("Warning: Could not open input.txt, using default value\n");
+      n = 10; // Default value
+    } else {
+      printf("Enter the number of elements (n): \n");
+      if (fscanf(input_file, "%d", &n) == 1) {
+        printf("Read value: %d\n", n);
+      } else {
+        printf("Failed to read from input.txt, using default value\n");
+        n = 10; // Default value
+      }
+      fclose(input_file);
+    }
   }
   // broadcasting the content of variable "n" in process 0 
   // into variables "n" in all other processes:

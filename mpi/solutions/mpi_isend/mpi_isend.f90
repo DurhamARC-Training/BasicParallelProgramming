@@ -5,6 +5,7 @@ PROGRAM mpi_isend_example
    INTEGER :: rank, size, ierr
    INTEGER :: tag, destination, count
    INTEGER :: buffer ! value to send
+   INTEGER :: input_unit, io_status
    TYPE(MPI_Status) :: status
    TYPE(MPI_Request) :: request
 
@@ -23,8 +24,22 @@ PROGRAM mpi_isend_example
    END IF
 
    IF (rank == 0) THEN
-      WRITE(*,'(A,I0,A)') 'Enter a value to send to processor ', destination, ':'
-      read(*,*) buffer
+      ! Open input file and read value
+      OPEN(UNIT=10, FILE='input.txt', STATUS='OLD', ACTION='READ', IOSTAT=io_status)
+      IF (io_status /= 0) THEN
+         WRITE(*,*) 'Warning: Could not open input.txt, using default value'
+         buffer = 42  ! Default value
+      ELSE
+         WRITE(*,'(A,I0,A)') 'Enter a value to send to processor ', destination, ':'
+         READ(10, *, IOSTAT=io_status) buffer
+         IF (io_status /= 0) THEN
+            WRITE(*,*) 'Failed to read from input.txt, using default value'
+            buffer = 42  ! Default value
+         ELSE
+            WRITE(*,'(A,I0)') 'Read value: ', buffer
+         END IF
+         CLOSE(10)
+      END IF
       CALL MPI_Isend(buffer, count, MPI_INTEGER, destination, tag, MPI_COMM_WORLD, request, ierr) ! non blocking send to destination process
    END IF
 

@@ -5,6 +5,7 @@ PROGRAM first_example
   INTEGER :: n               ! application-related data
   DOUBLE PRECISION :: result ! application-related data
   INTEGER :: my_rank, num_procs, rank  ! MPI-related data
+  INTEGER :: input_unit, io_status
 
   CALL MPI_Init()
 
@@ -12,9 +13,22 @@ PROGRAM first_example
   CALL MPI_Comm_size(MPI_COMM_WORLD, num_procs)
 
   IF (my_rank == 0) THEN  
-    !  reading the application data "n" from stdin only by process 0:
-    WRITE(*,*) "Enter the number of elements (n):"
-    READ(*,*) n
+    !  reading the application data "n" from file only by process 0:
+    OPEN(UNIT=10, FILE='input.txt', STATUS='OLD', ACTION='READ', IOSTAT=io_status)
+    IF (io_status /= 0) THEN
+      WRITE(*,*) "Warning: Could not open input.txt, using default value"
+      n = 10  ! Default value
+    ELSE
+      WRITE(*,*) "Enter the number of elements (n):"
+      READ(10, *, IOSTAT=io_status) n
+      IF (io_status /= 0) THEN
+        WRITE(*,*) "Failed to read from input.txt, using default value"
+        n = 10  ! Default value
+      ELSE
+        WRITE(*,'(A,I0)') "Read value: ", n
+      END IF
+      CLOSE(10)
+    END IF
   ENDIF
   !  broadcasting the content of variable "n" in process 0 
   !  into variables "n" in all other processes:
@@ -22,6 +36,7 @@ PROGRAM first_example
 
   !  doing some application work in each process, e.g.:
   result = 1.0 * my_rank * n
+
   WRITE(*,'(A,I3,A,I3,A,I2,A,I5,A,F9.2)') &
    &        'I am process ', my_rank, ' out of ', num_procs, &
    &        ' handling the ', my_rank, 'th part of n=', n, ' elements, result=', result
