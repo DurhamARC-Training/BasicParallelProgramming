@@ -1,5 +1,5 @@
 PROGRAM helloworld
-!   USE mpi_f08
+   USE mpi_f08
    IMPLICIT none
 
    DOUBLE PRECISION :: my_data, my_result ! application-related data
@@ -17,8 +17,8 @@ PROGRAM helloworld
    WRITE(*,'(A,F9.2)') &
   & 'I am process ... with data = ', my_data
 
-! Broadcast data from some process to all other processes
+! Don't do - Broadcast data from some process to all other processes
 
-! Do some work with data (get result) and print data and result in every process
+! Don't do - Do some work with data (get result) and print data and result in every process
 
 END PROGRAM 
