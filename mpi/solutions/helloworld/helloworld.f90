@@ -21,19 +21,19 @@ PROGRAM helloworld
 
 ! Initialize different data in every MPI process depending on their rank
 
-   my_data = rank + (1.0*rank)/size
-   WRITE(*,'(A,I3,A,I3,A,F9.2)') &
-  & 'I am process ', rank, ' of size ', size, ' with data=', my_data
+!   my_data = rank + (1.0*rank)/size
+!   WRITE(*,'(A,I3,A,I3,A,F9.2)') &
+!  & 'I am process ', rank, ' of size ', size, ' with data=', my_data
      
 ! Broadcast data from some process to all other processes
    !  broadcasting the content of variable "my_data" in process 1
    !  into variables "my_data" in all other processes:
-   CALL MPI_Bcast(my_data, 1, MPI_INTEGER, 1, MPI_COMM_WORLD)
+!   CALL MPI_Bcast(my_data, 1, MPI_INTEGER, 1, MPI_COMM_WORLD)
 
 ! Do some work with data (get result) and print data and result in every process
-   my_result = 1.0 + my_data
-   WRITE(*,'(A,I3,A,I3,A,F9.2,A,F9.2)') &
-  & 'I am process ', rank, ' of size ', size, ' with data=', my_data, ' and result=', my_result
+!   my_result = 1.0 + my_data
+!   WRITE(*,'(A,I3,A,I3,A,F9.2,A,F9.2)') &
+!  & 'I am process ', rank, ' of size ', size, ' with data=', my_data, ' and result=', my_result
 
    CALL MPI_FINALIZE(ierr) ! finalise MPI
 
