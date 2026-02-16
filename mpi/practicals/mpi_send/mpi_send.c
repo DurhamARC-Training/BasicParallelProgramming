@@ -43,7 +43,7 @@ char **argv;
             if (input_file && fscanf(input_file, "%d", &value) == 1) {
                 printf("Read value: %d\n", value);
             } else {
-                value = -1; // Default to exit if file reading fails or EOF
+                value = -1; // set negative value to trigger loop exit
             }
             ; /* <-- INSERT MISSING MPI FUNCTION HERE: the root process sends the read-in value to next process (by ID) */
         } else {
@@ -52,9 +52,9 @@ char **argv;
             if (rank < size-1)
                 ; /* <-- INSERT MISSING MPI FUNCTION HERE: each process sends the value to the next process by ID */
         
-            printf("Process %d got %d\n", rank, value);  //the received value
+            printf("Process %d got %d\n", rank, value);  // the received value
         }
-    } while (value >= 0); //keep going until user inputs negative number
+    } while (value >= 0); // keep going until user inputs negative number
 
     // Close input file at the end
     if (rank == 0 && input_file) {
