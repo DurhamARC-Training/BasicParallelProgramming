@@ -9,8 +9,7 @@
 #SBATCH -c 4 # number of cores per task
 
 module purge
-module load intel
-module load intelmpi
-#module load gcc openmpi
+module load gcc openmpi
+#module load intel intelmpi
 
 mpirun ./pi_profiling
