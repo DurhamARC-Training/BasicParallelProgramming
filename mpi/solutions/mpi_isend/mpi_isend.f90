@@ -2,6 +2,21 @@ PROGRAM mpi_isend_example
    USE mpi_f08
    IMPLICIT NONE
 
+!!!!!!!!!!!!
+!! MPI_Isend
+!!!!!!!!!!!!
+!!
+!! uses:
+!! MPI_Isend(buf, count, datatype, dest, tag, comm, request)
+!!
+!! This example uses MPI_Isend to do a non-blocking send of information from the root process to a destination process.
+!! The destination process is set as a variable in the code and must be less than the number of processes started.
+!!
+!! example usage:
+!!		compile: mpif90 -o mpi_isend mpi_isend.f90
+!!		run: mpirun -n 4 mpi_isend
+!!
+
    INTEGER :: rank, size, ierr
    INTEGER :: tag, destination, count
    INTEGER :: buffer ! value to send

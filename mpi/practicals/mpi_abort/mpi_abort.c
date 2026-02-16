@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "mpi.h"
 
-
 ////////////
-//MPI_Abort
+// MPI_Abort
 ////////////
 //
 // Simple example that sets up certain number of MPI processes but only continues if 4 processes are used, otherwise
@@ -22,9 +21,8 @@ char **argv;
 
 /* Turn it into an MPI program (initialise MPI) */   
     ; /* <-- INSERT MISSING MPI FUNCTION ON THIS LINE */
-    
-    MPI_Comm_rank(/*INSERT ARGUMENTS*/); //rank of the processor, root = 0
-    MPI_Comm_size(/*INSERT ARGUMENTS*/); //number of processors
+    ; /* <-- INSERT Get the rank within the global communicator */
+    ; /* <-- INSERT Get the total number of ranks within the global communicator */
     
     if (size != 4) {
         MPI_Abort(/*INSERT ARGUMENTS*/); //abort properly with error code '1' if not using 4 processes
@@ -33,7 +31,7 @@ char **argv;
     printf("hello I am process: %d, size should only be 4: %d\n"/*, INSERT VARIABLES */);
 
 /* Properly shutdown MPI (finalise MPI) */
-   ; /* <-- INSERT MISSING MPI FUNCTION ON THIS LINE */
+    ; /* <-- INSERT MISSING MPI FUNCTION ON THIS LINE */
 
 	return 0;
 }

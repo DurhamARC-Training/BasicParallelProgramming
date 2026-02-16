@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "mpi.h"
 
-
 ////////////
 //MPI_Bcast
 ////////////
 //
+// uses:
 // int MPI_Bcast( void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm )
 //
 // This example simply uses MPI_Bcast to broadcast a read in value to all other processes from root process
@@ -14,6 +14,7 @@
 //		compile: mpicc -o mpi_bcast mpi_bcast.c
 //		run: mpirun -n 4 mpi_bcast
 //
+
 int main(argc, argv)
 int argc;
 char **argv;

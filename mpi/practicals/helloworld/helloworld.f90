@@ -2,23 +2,28 @@ PROGRAM helloworld
    USE mpi_f08
    IMPLICIT none
 
+!!!!!!!!!!!!!!!!!!
+!! MPI Hello World
+!!!!!!!!!!!!!!!!!!
+!!
+!! Classical example printing "Hello World" in several processes
+!!
+!! example usage:
+!!		compile: mpif90 -o helloworld helloworld.f90
+!!		run: mpirun -n 4 helloworld
+!!
+
    DOUBLE PRECISION :: my_data, my_result ! application-related data
 
 ! Turn it into an MPI program
+   CALL ... ! initialise MPI
+   CALL ... ! get rank
+   CALL ... ! get size
 
 ! Experiment with Hello message in all processes and only in the master process
 
-   WRITE (*,*) 'Hello World'
+   WRITE (*,*) ...
 
-! Print out various information about MPI infrastructure
-
-! Initialize different data in every MPI process depending on their rank
-
-   WRITE(*,'(A,F9.2)') &
-  & 'I am process ... with data = ', my_data
-
-! Don't do - Broadcast data from some process to all other processes
-
-! Don't do - Do some work with data (get result) and print data and result in every process
+   CALL ... ! finalise MPI
 
 END PROGRAM 

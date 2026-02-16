@@ -3,9 +3,10 @@
 
 
 ////////////
-//MPI_Isend
+// MPI_Isend
 ////////////
 //
+// uses:
 // int MPI_Isend(const void *buf, int count, MPI_Datatype datatype, int dest, int tag,
 //              MPI_Comm comm, MPI_Request *request)
 //
@@ -16,6 +17,7 @@
 //		compile: mpicc -o mpi_isend mpi_isend.c
 //		run: mpirun -n 4 mpi_isend
 //
+
 int main(argc, argv)
 int argc;
 char **argv;
