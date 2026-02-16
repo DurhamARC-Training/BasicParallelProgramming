@@ -2,12 +2,26 @@ PROGRAM mpi_send_example
    USE mpi_f08
    IMPLICIT NONE
 
+!!!!!!!!!!!
+!! MPI_Send
+!!!!!!!!!!!
+!!
+!! uses:
+!! MPI_Send(buf, count, datatype, dest, tag, MPI_Comm comm)
+!!
+!! This example sets up a ring of processes, the user gives a value and the root process sends the value
+!! to the next process. Each process then sends the value to the next process (by process ID) up to the end of the ring.
+!!
+!! example usage:
+!!		compile: mpicc -o mpi_send mpi_send.c
+!!		run: mpirun -n 4 mpi_send
+!!
+
    INTEGER :: rank, value, size, ierr
    TYPE(MPI_Status) :: status
    INTEGER :: input_unit, io_status
 
    CALL MPI_Init(ierr)
-   
    CALL MPI_Comm_rank(MPI_COMM_WORLD, rank, ierr) ! get the rank or ID of the current process
    CALL MPI_Comm_size(MPI_COMM_WORLD, size, ierr) ! number of processes that are running
 

@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "mpi.h"
 
-
-////////////
-//MPI_Comm_rank
-////////////
+////////////////
+// MPI_Comm_rank
+////////////////
 //
+// uses:
 // int MPI_Comm_rank( MPI_Comm comm, int *rank ) 
 //
 // Simple example that outputs the process ID of each process using MPI_Comm_rank
@@ -14,6 +14,7 @@
 //		compile: mpicc -o mpi_comm_rank mpi_comm_rank.c
 //		run: mpirun -n 4 mpi_comm_rank
 //
+
 int main(argc, argv)
 int argc;
 char **argv;

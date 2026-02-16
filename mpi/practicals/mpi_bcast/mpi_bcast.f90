@@ -1,12 +1,25 @@
 PROGRAM mpi_bcast_example
-!   USE mpi_f08
+!   USE ... !! INSERT MISSING HEADER
    IMPLICIT NONE
+
+!!!!!!!!!!!!
+!! MPI_Bcast
+!!!!!!!!!!!!
+!!
+!! uses:
+!! MPI_Bcast(buffer, count, datatype, root, comm, ierr)
+!!
+!! This example simply uses MPI_Bcast to broadcast a read in value to all other processes from root process
+!!
+!! example usage:
+!!		compile: mpif90 -o mpi_bcast mpi_bcast.f90
+!!		run: mpirun -n 4 mpi_bcast
+!!
 
    INTEGER :: rank, value, ierr
 
 ! Turn it into an MPI program (initialise MPI)
    ! <-- INSERT MISSING MPI FUNCTION HERE
-
    ! <-- INSERT MISSING MPI FUNCTION HERE: what rank is the current processor
 
    IF (rank == 0) THEN
