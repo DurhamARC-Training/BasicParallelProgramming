@@ -6,6 +6,7 @@ PROGRAM pingpong
    integer ierr, rank, size, i
    integer status (MPI_STATUS_SIZE)
    integer send, recv
+   integer, parameter :: N = 2
 
 ! Initialise MPI
    CALL MPI_Init(ierr)
@@ -25,14 +26,14 @@ PROGRAM pingpong
    IF (rank.eq.0) send = 1 ! initialise send buffer on the first processor
 
 ! Begin loop
-   DO i=1,10 ! loop for 10 iterations
+   DO i=0,N-1 ! loop for N iterations
       IF (rank.eq.0) then
 ! Blocking send on first processor to second
          CALL MPI_Ssend(send, 1, MPI_INTEGER, 1, 1, MPI_COMM_WORLD, ierr)
-         write(*,*) 'Stage ', 4*(i-1)+1, ': sent ', send, ' on proc ', rank
+         write(*,*) 'Stage ', 4*(i)+1, ': sent ', send, ' on proc ', rank
 ! Receive message on first processor from second
          CALL MPI_Recv(recv, 1, MPI_INTEGER, 1, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
-         write(*,*) 'Stage ', 4*(i-1)+4, ': received ', recv, ' on proc ', rank
+         write(*,*) 'Stage ', 4*(i)+4, ': received ', recv, ' on proc ', rank
          write(*,*)'                     adding 1 to receive buffer and placing in send buffer'
 ! Alter message for next iteration
          send = recv + 1 
@@ -40,13 +41,13 @@ PROGRAM pingpong
       ELSEIF (rank.eq.1) THEN
 ! Receive on second processor from first
          CALL MPI_Recv(recv, 1, MPI_INTEGER, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE)
-         write(*,*) 'Stage ', 4*(i-1)+2, ': received ', recv, ' on proc ', rank
+         write(*,*) 'Stage ', 4*(i)+2, ': received ', recv, ' on proc ', rank
          write(*,*)'                     adding 1 to recieve buffer and placing in send buffer'
 ! Alter message to send back again
          send = recv + 1
 ! Send on second processor back to first
          CALL MPI_Ssend(send, 1, MPI_INTEGER, 0, 2, MPI_COMM_WORLD, ierr)
-         write(*,*) 'Stage ', 4*(i-1)+3, ': sent ', send,' on proc ', rank
+         write(*,*) 'Stage ', 4*(i)+3, ': sent ', send,' on proc ', rank
       ENDIF
       CALL flush(6) ! force output to screen
    END DO

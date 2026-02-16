@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "mpi.h"
 
-
 ////////////
-//MPI_Send
+// MPI_Send
 ////////////
 //
 // uses:
@@ -16,6 +15,7 @@
 //		compile: mpicc -o mpi_send mpi_send.c
 //		run: mpirun -n 4 mpi_send
 //
+
 int main(argc, argv)
 int argc;
 char **argv;
@@ -25,7 +25,6 @@ char **argv;
     FILE *input_file = NULL;
 
     MPI_Init(&argc, &argv);
- 
     MPI_Comm_rank(MPI_COMM_WORLD, &rank); //get the rank or ID of the current process
     MPI_Comm_size(MPI_COMM_WORLD, &size); //number of processes that are running
 

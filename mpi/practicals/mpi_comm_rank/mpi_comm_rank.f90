@@ -1,6 +1,22 @@
 PROGRAM mpi_comm_rank_example
-!   USE mpi_f08
+!   USE ... !! INSERT MISSING HEADER
    IMPLICIT NONE
+
+!!!!!!!!!!!!!!!!
+!! MPI_Comm_rank
+!!!!!!!!!!!!!!!!
+!!
+!! uses:
+!! MPI_Comm_rank(MPI_Comm comm, rank, ierr) 
+!!
+!! int MPI_Comm_rank( MPI_Comm comm, int *rank ) 
+!!
+!! Simple example that outputs the process ID of each process using MPI_Comm_rank
+!!
+!! example usage:
+!!		compile: mpif90 -o mpi_comm_rank mpi_comm_rank.f90
+!!		run: mpirun -n 4 mpi_comm_rank
+!!
 
    INTEGER :: rank, ierr
 

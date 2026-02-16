@@ -9,9 +9,8 @@
 #SBATCH -c 1 # number of cores per task
 
 module purge
-#module load intel/2021.4
-#module load intelmpi/2021.6
-module load gcc openmpi
+module load intel
+module load intelmpi
+#module load gcc openmpi
 
 mpirun ./mpi_send
-
