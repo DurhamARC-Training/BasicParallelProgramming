@@ -31,7 +31,7 @@ int main (int argc, char *argv[])
 
 /* Compute global sum of all ranks */
    MPI_Allreduce (&rank, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);  
-   printf ("Rank %i:\tSum = %i\n", rank, sum);
+   printf ("Rank %i:\tGlobal sum = %i\n", rank, sum);
   
 /* Compute partial rank sum */
    MPI_Scan (&rank, &part, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD ); 
