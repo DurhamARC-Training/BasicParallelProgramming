@@ -14,11 +14,11 @@ PROGRAM collective
 
 ! Compute global sum of all ranks
    CALL MPI_Allreduce (rank, sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD, ierr);
-   write(*,*) 'Rank ', rank, ': Sum = ', sum
+   write(*,*) 'Rank ', rank, ': Global sum = ', sum
 
 ! Compute partial rank sum
    CALL MPI_Scan(rank, sum, 1, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD)
-   write(*,*) 'Rank ', rank, ': Sum = ', sum
+   write(*,*) 'Rank ', rank, ': Partial sum = ', sum
 
    CALL MPI_Finalize(ierr) ! finalise MPI
 
